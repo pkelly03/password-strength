@@ -1,27 +1,81 @@
 <!doctype html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mocha Spec Runner</title>
-    <link rel="stylesheet" href="bower_components/mocha/mocha.css">
+    <title>Jasmine Spec Runner</title>
+    <link rel="stylesheet" href="bower_components/jasmine/lib/jasmine-core/jasmine.css">
 </head>
+
 <body>
-    <div id="mocha"></div>
-    <script src="bower_components/mocha/mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
-    <script src="bower_components/chai/chai.js"></script>
-    <script>
-        var assert = chai.assert;
-        var expect = chai.expect;
-        var should = chai.should();
-    </script>
+    <script src="../app/bower_components/jasmine/lib/jasmine-core/jasmine.js"></script>
+    <script src="../app/bower_components/jasmine/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/spy.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/call.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/behavior.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/stub.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/mock.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/collection.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/assert.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/sandbox.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/test.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/test_case.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/assert.js"></script>
+    <script src="../app/bower_components/sinon/lib/sinon/match.js"></script>
+
+    <!-- build:js scripts/vendor.js -->
+    <script src="../app/bower_components/jquery/dist/jquery.js"></script>
+    <script src="../app/bower_components/underscore/underscore.js"></script>
+    <script src="../app/bower_components/backbone/backbone.js"></script>
+    <script src="../app/bower_components/handlebars/handlebars.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <script src="../app/bower_components/sass-bootstrap/js/affix.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/alert.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/dropdown.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/tooltip.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/modal.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/transition.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/button.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/popover.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/carousel.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/scrollspy.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/collapse.js"></script>
+    <script src="../app/bower_components/sass-bootstrap/js/tab.js"></script>
+
 
     <!-- include source files here... -->
+    <script src="../app/scripts/main.js"></script>
+    <script src="../.tmp/scripts/templates.js"></script>
+    <script src="../app/scripts/views/password-view.js"></script>
+    <script src="../app/scripts/models/password.js"></script>
 
     <!-- include spec files here... -->
     <script src="spec/test.js"></script>
 
-    <script>mocha.run()</script>
+    <script>
+    (function() {
+        var jasmineEnv = jasmine.getEnv();
+        jasmineEnv.updateInterval = 1000;
+        var htmlReporter = new jasmine.HtmlReporter();
+        jasmineEnv.addReporter(htmlReporter);
+        jasmineEnv.specFilter = function(spec) {
+            return htmlReporter.specFilter(spec);
+        };
+        var currentWindowOnload = window.onload;
+        window.onload = function() {
+            if (currentWindowOnload) {
+                currentWindowOnload();
+            }
+            execJasmine();
+        };
+
+        function execJasmine() {
+            jasmineEnv.execute();
+        }
+    })();
+    </script>
 </body>
+
 </html>

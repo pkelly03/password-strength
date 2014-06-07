@@ -34,12 +34,12 @@ PasswordStrength.Views = PasswordStrength.Views || {};
             });
 
             if (this.model.isValid()) {
-               this.handleSuccess()     
+                this.handleSuccess();
             }
         },
 
         handleSubmit: function() {
-            alert('successfully submitted!');
+            console.log('successfully submitted!');
         },
 
         handleSuccess: function() {
@@ -48,8 +48,8 @@ PasswordStrength.Views = PasswordStrength.Views || {};
             $('#validationErrors').html('');
         },
 
-        handleError: function(model, error) {
-            $('#validationErrors').html(_.values(this.model.validationError).join("<p>"));
+        handleError: function() {
+            $('#validationErrors').html(_.values(this.model.validationError).join('<p>'));
             $('button[type=submit]').prop('disabled', true);
         }
     });

@@ -1,4 +1,4 @@
-/*global Application, $*/
+/*global PasswordStrength, $*/
 
 
 window.PasswordStrength = {
@@ -9,7 +9,7 @@ window.PasswordStrength = {
     init: function () {
         'use strict';
         console.log('Starting password strength application');
-        var password = new this.Models.PasswordModel;
+        var password = new this.Models.PasswordModel();
 
         new this.Views.PasswordView({
             model:  password

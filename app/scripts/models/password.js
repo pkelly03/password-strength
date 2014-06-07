@@ -15,9 +15,9 @@ PasswordStrength.Models = PasswordStrength.Models || {};
             completed: false
         },
 
-        validate: function(attrs, options) {
-            var errors = {}
-            if (attrs.password.length < 8) {
+        validate: function(attributes) {
+            var errors = {};
+            if (attributes.password.length < 8) {
                 errors.length = 'Password is less than 8 characters';
             }
             
@@ -26,7 +26,7 @@ PasswordStrength.Models = PasswordStrength.Models || {};
             }
         },
 
-        parse: function(response, options) {
+        parse: function(response) {
             return response;
         }
     });

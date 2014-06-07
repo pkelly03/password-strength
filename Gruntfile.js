@@ -124,11 +124,11 @@ module.exports = function (grunt) {
                 'test/spec/{,*/}*.js'
             ]
         },
-        mocha: {
+        // Jasmine testing framework configuration options
+        jasmine: {
             all: {
                 options: {
-                    run: true,
-                    src: ['http://localhost:<%= connect.test.options.port %>/index.html']
+                    specs: 'test/spec/{,*/}*.js'
                 }
             }
         },
@@ -296,12 +296,14 @@ module.exports = function (grunt) {
                 'handlebars',
                 'compass',
                 'connect:test',
-                'mocha',
+                'jasmine'
             ];
 
         if(!isConnected) {
+
             return grunt.task.run(testTasks);
         } else {
+            grunt.log.warn('connected..');
             // already connected so not going to connect again, remove the connect:test task
             testTasks.splice(testTasks.indexOf('connect:test'), 1);
             return grunt.task.run(testTasks);
