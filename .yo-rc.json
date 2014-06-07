@@ -1,0 +1,12 @@
+{
+  "generator-backbone": {
+    "appPath": "app",
+    "appName": "PasswordStrength",
+    "coffee": false,
+    "testFramework": "jasmine",
+    "templateFramework": "handlebars",
+    "compassBootstrap": true,
+    "includeRequireJS": false,
+    "ui": "tdd"
+  }
+}
